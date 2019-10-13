@@ -1,5 +1,6 @@
 @charset "utf-8";
 @import url(./normalize.css);
+@import url(./fonts.css);
 * *::before, *::after{
   box-sizing: border-box;
   font-family: 'Spoqa Han Sans', 'Sans-serif'; 
@@ -30,7 +31,7 @@ fieldset{
   padding: 0;
 }
 /* 공통 숨김 콘텐츠 */
-legend, .ally-hidden{
+legend, .a11y-hidden{
   background: pink;
   position: absolute;
   /*  top:-9999em; 이렇게 쓰면 스킨코더가 읽어버리면서 화면 위로 가짐 */
@@ -43,7 +44,7 @@ legend, .ally-hidden{
 }
 /* All Device */
 .container{
-  background-color: silver;
+  background-color: white;
   display: flex;
   flex-flow: row wrap;
 }
@@ -97,10 +98,6 @@ input[type="search"]:focus:-ms-input-placeholder { /* IE 10+ */
 }
 input[type="search"]:focus:-moz-placeholder { /* Firefox 18- */
   color: transparent;
-}
-.navigation{
-  background-color: pink;
-  height: 20vh;
 }
 .main{
   background-color: skyblue;
@@ -187,6 +184,84 @@ input[type="search"]:focus:-moz-placeholder { /* Firefox 18- */
     height: 100%;
     background: url(./images/btn_search.png) no-repeat 0 0 / cover;
   }
+  /* 모바일 네비게이션 */
+  .btn-menubar{
+    background: transparent; /* 투명 */
+    width: 3rem;
+    height: 3rem;
+    border: 0;
+    padding: 0;
+    position: absolute;
+    top: 4em;
+    right: 1.5em;
+    overflow: hidden; /* 벗어나면 가려버리기*/
+    cursor: pointer;
+  }
+  .menubar{
+    background-color: white;
+    width:100%;
+    height:20%;
+    position: absolute;
+    left:0;
+    border-radius: 1rem;
+    transition: all 0.2s;
+  }
+  .menubar-top{
+    top:0;
+  }
+  .menubar-middle{
+    top:50%;
+    transform: translateY(-50%);
+  }
+  .menubar-bottom{
+    top:100%;
+    transform: translateY(-100%);
+  }
+  .nav-act .menubar-top{
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+  }
+  .nav-act .menubar-middle{
+    transform: translate(-100%, -50%);
+  }
+  .nav-act .menubar-bottom{
+    top: 50%;
+    transform: translateY(-50%) rotate(-45deg);
+  }
+
+  .menu{
+    color:white;
+    background-color: rgba(0,0,0,0.85);
+    margin: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 100vh;
+    padding: 2em 1em; /* 위아래 두 글자만큼 좌우는 한 글자 만큼 */
+    list-style: none;
+    transform: translateX(-100%);
+    transition: all 0.2s;
+  }
+  .nav-act .menu{
+    transform: none;
+  }
+  .menu-list{
+    margin: 1em 0;
+  }
+  .menu-item{
+    cursor: pointer;
+  }
+  .sub-menu{
+    padding-left:3em;
+    display: none;
+  }
+  .menu-act .sub-menu{
+    display: block;
+  }
+  .sub-menu li{
+    margin: 0.5em 0;
+  }
 }
 
 
@@ -197,12 +272,13 @@ input[type="search"]:focus:-moz-placeholder { /* Firefox 18- */
     flex-direction: column;
     align-items: center;
   }
-  .header, .main{
+  .header, .menu, .main{
     width:1000px;
   }
   /* 데스크탑 헤더 */
   .header{
     position: relative;
+    padding-bottom: 1em;
   }
   /* 데스크탑 멤버링크 */
   .bar{
@@ -210,7 +286,6 @@ input[type="search"]:focus:-moz-placeholder { /* Firefox 18- */
   }
   /* 데스크탑 로고 */
   .logo{
-    background-color: green;
     margin: 0;
     width: initial;  /*  원래의 값(기존 값) */
     position: absolute;
@@ -232,6 +307,43 @@ input[type="search"]:focus:-moz-placeholder { /* Firefox 18- */
     height: 3rem;
     padding : 0.15em 1em;
     border-radius: 5px;
+  }
+  /* 데스크탑 네비게이션 */
+  .navigation{
+    background-color: #988574;
+    color:white;
+    box-shadow: 0 -2px 5px 0 #999, 0 2px 5px 0 #999;
+  }
+  .btn-menubar{
+    display: none;
+  }
+  .menu, .sub-menu{
+    list-style: none;
+  }
+  .menu{
+    margin:0 auto;
+    /* overflow: hidden; */
+    display: flex;
+    justify-content: space-between;
+    padding-left: 0;
+  }
+  .menu-list{
+    /* float:left; */
+    margin : 0.5em 0;
+  }
+  .menu-item{
+    cursor: text;
+    font-weight: 700;
+    font-size: 1.8rem;
+  }
+  .menu-list::before, .menu-item{
+    text-shadow: 1px 0 0 #181818, 0 1px 0 #181818, -1px 0 0 #181818, 0 -1px 0 #181818;
+  }
+  .sub-menu{
+    font-weight: 400;
+  }
+  .sub-menu li{
+    margin: 0.5em 0;
   }
   .main{
     justify-content: space-between;
