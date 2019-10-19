@@ -42,6 +42,52 @@ legend, .a11y-hidden{
   clip: rect(0,0,0,0);
   clip-path:polygon(0 0, 0 0, 0 0)
 }
+/* 공통스타일 모듈 */
+
+.responsive{
+  max-width: 100%;
+  height: auto;
+}
+.en-block{
+  display:block;
+  font-weight:400;
+  font-size:1.7rem;
+}
+.ir{
+  background: url(./images/sprite_main.png) no-repeat;
+  padding-left:65px;
+  min-height: 60px;
+}
+.ir-book{
+  background-position: 0 0;
+}
+.ir-news{
+  background-position: 0 -230px;;
+}
+.ir-board{
+  background-position: 0 -215px;
+}
+.ir-favorite{
+  background-position: 0 -345px;
+}
+.ir-twitter{
+  background-position: 0 -460px;
+}
+.point-color-green{
+  color:#abd375;
+}
+.point-color-yellow{
+  color:#e8ca58;
+}
+.point-color-brown{
+  color:#c7b39a;
+}
+.point-color-skyblue{
+  color:#6aaee6;
+}
+.point-color-orange{
+  color:#eea60a;
+}
 /* All Device */
 .container{
   background-color: white;
@@ -99,30 +145,26 @@ input[type="search"]:focus:-ms-input-placeholder { /* IE 10+ */
 input[type="search"]:focus:-moz-placeholder { /* Firefox 18- */
   color: transparent;
 }
+/* 공통 메인 */
 .main{
-  background-color: skyblue;
-  height: 60vh;
   display: flex;
   flex-flow:row wrap;
 }
 .book, .news, .board, .favorite, .twitter{
   width: 100%;
 }
-.book{
-  background-color: blueviolet;
+.main [class*="heading"]{
+  font-weight: 700;
+  font-size:1.8rem;
 }
-.news{
-  background-color: orangered;
+/* 공통 추천서적 */
+.book-cover{
+  text-align: center;
 }
-.board{
-  background-color: teal;
-}
-.favorite{
-  background-color: goldenrod;
-}
-.twitter{
-  background-color: aqua;
-}
+/* 공통 새소식 */
+/* 공통 게시판 */
+/* 공통 인기 사이트 */
+/* 공통 트위터 */
 .footer{
   background-color: purple;
   height: 10vh;
@@ -228,22 +270,25 @@ input[type="search"]:focus:-moz-placeholder { /* Firefox 18- */
     top: 50%;
     transform: translateY(-50%) rotate(-45deg);
   }
-
+  
   .menu{
-    color:white;
-    background-color: rgba(0,0,0,0.85);
-    margin: 0;
     position: fixed;
     top: 0;
     left: 0;
-    width: 80%;
-    height: 100vh;
-    padding: 2em 1em; /* 위아래 두 글자만큼 좌우는 한 글자 만큼 */
+    overflow: hidden;
     list-style: none;
     transform: translateX(-100%);
     transition: all 0.2s;
+    width:0;
+    
   }
   .nav-act .menu{
+    padding: 2em 1em; /* 위아래 두 글자만큼 좌우는 한 글자 만큼 */
+    color:white;
+    background-color: rgba(0,0,0,0.85);
+    margin: 0;
+    width:80%;
+    height: 100vh;
     transform: none;
   }
   .menu-list{
