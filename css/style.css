@@ -226,6 +226,37 @@ input[type="search"]:focus:-moz-placeholder { /* Firefox 18- */
   right: 0;
 }
 /* 공통 인기 사이트 */
+.favorite-list{
+  background: yellow;
+  list-style-type:none;
+  counter-reset:0;
+}
+.favorite-list li {
+  counter-increment: number;
+  margin: 1em 0;
+}
+
+.favorite-list li::before{
+  content: counter(number, decimal);
+  background: #eea60a;
+  color: #fff;
+  border-radius: 50%;
+  padding: 0 0.5em;
+  margin-right: 1em;
+}
+/* .favorite-list li:nth-child(1)::before{
+  content:"1";
+}
+.favorite-list li:nth-child(2)::before{
+  content:"2";
+}
+.favorite-list li:nth-child(3)::before{
+  content:"3";
+}
+.favorite-list li:nth-child(4)::before{
+  content:"4";
+} */
+
 /* 공통 트위터 */
 .footer{
   background-color: purple;
